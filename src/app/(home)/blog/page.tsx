@@ -14,7 +14,7 @@ const BlogPage = async () => {
         Todos los artículos
       </Heading>
 
-      {!resp.data.length && <p>No hay artículos registrados</p>}
+      {!resp.data.length && <p>No hay artículos disponibles</p>}
 
       <ul className="divide-y-1 divide-(--border)">
         {resp.data.map(post => (

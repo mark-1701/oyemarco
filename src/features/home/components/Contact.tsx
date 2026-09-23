@@ -50,7 +50,7 @@ export const Contact = () => {
             {...register('name', { required: true })}
           />
           {errors.name && (
-            <span className="font-bold">* El nombre es obligatorio</span>
+            <SpanErrorMessage>El nombre es obligatorio</SpanErrorMessage>
           )}
         </InputForm>
 
@@ -70,7 +70,7 @@ export const Contact = () => {
             })}
           />
           {errors.email && (
-            <span className="font-bold">* {errors.email.message}</span>
+            <SpanErrorMessage>{errors.email.message}</SpanErrorMessage>
           )}
         </InputForm>
 
@@ -83,13 +83,13 @@ export const Contact = () => {
             {...register('message', {
               required: 'El mensaje es obligatorio',
               maxLength: {
-                value: 1500,
-                message: 'El mensaje no puede tener más de 1500 carácteres'
+                value: 2000,
+                message: 'El mensaje no puede tener más de 2000 carácteres'
               }
             })}
           ></textarea>
           {errors.message && (
-            <span className="font-bold">* {errors.message.message}</span>
+            <SpanErrorMessage>{errors.message.message}</SpanErrorMessage>
           )}
         </InputForm>
 
@@ -107,4 +107,8 @@ export const Contact = () => {
 
 const InputForm = ({ children }: { children: React.ReactNode }) => (
   <div className="flex flex-col gap-1.5">{children}</div>
+);
+
+const SpanErrorMessage = ({ children }: { children: React.ReactNode }) => (
+  <span className="text-xs font-bold text-(--foreground)">* {children}</span>
 );

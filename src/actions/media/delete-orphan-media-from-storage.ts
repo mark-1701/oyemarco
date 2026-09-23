@@ -1,7 +1,7 @@
 'use server';
 
-import { ActionResult } from '@/types';
 import { deleteFromStorage } from '@/services/storage/r2';
+import { ActionResult } from '@/types';
 
 export const deleteOrphanMediaFromStorage = async (
   keys: string[]
@@ -9,12 +9,17 @@ export const deleteOrphanMediaFromStorage = async (
   try {
     const deletedKeys = await deleteFromStorage(keys);
     return { ok: true, data: deletedKeys };
-  } catch (error) {
-    const message =
-      error instanceof Error
-        ? error.message
-        : 'Error eliminando archivos del storage';
+  } catch {
+    // Otra forma para evaluar errores
+    // const message =
+    //   error instanceof Error
+    //     ? error.message
+    //     : 'Error eliminando archivos del storage';
+    // return { ok: false, message };
 
-    return { ok: false, message };
+    return {
+      ok: false,
+      message: 'Error eliminando archivos del storage'
+    };
   }
 };

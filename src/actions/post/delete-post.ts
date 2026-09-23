@@ -16,7 +16,7 @@ export const deletePost = async (id: string): Promise<ActionResult<null>> => {
       ok: true,
       data: null
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error eliminando el post'

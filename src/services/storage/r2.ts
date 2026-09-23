@@ -7,6 +7,7 @@ import {
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
+// Instancia al cliente S3
 const S3 = new S3Client({
   region: 'auto',
   endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
@@ -16,6 +17,7 @@ const S3 = new S3Client({
   }
 });
 
+// Crear URL para subir el archivo
 export const createPresignedUpload = async ({
   key,
   fileType
@@ -23,25 +25,26 @@ export const createPresignedUpload = async ({
   key: string;
   fileType: string;
 }) => {
-  const uploadUrl = await getSignedUrl(
-    S3,
-    new PutObjectCommand({
-      Bucket: process.env.R2_BUCKET_NAME,
-      Key: key,
-      ContentType: fileType
-    }),
-    { expiresIn: 3600 }
-  );
+  try {
+    const uploadUrl = await getSignedUrl(
+      S3,
+      new PutObjectCommand({
+        Bucket: process.env.R2_BUCKET_NAME,
+        Key: key,
+        ContentType: fileType
+      }),
+      { expiresIn: 3600 }
+    );
 
-  const publicUrl = `${process.env.R2_PUBLIC_URL_BASE}/${key}`;
+    const publicUrl = `${process.env.R2_PUBLIC_URL_BASE}/${key}`;
 
-  return { publicUrl, uploadUrl };
+    return { publicUrl, uploadUrl };
+  } catch {
+    throw new Error('Error creando la URL de subida');
+  }
 };
 
-// -----------------------------------------------------------------------------
-// --- SUBIR ARCHIVO AL SERVICIO DE STORAGE
-// -----------------------------------------------------------------------------
-
+// Subir archivos al servicio storage
 export const uploadImageToStorage = async (file: File, key: string) => {
   try {
     const { publicUrl, uploadUrl } = await createPresignedUpload({
@@ -58,15 +61,10 @@ export const uploadImageToStorage = async (file: File, key: string) => {
     if (!response.ok) throw new Error(`Response status: ${response.status}`);
 
     return publicUrl;
-  } catch (error) {
-    console.error('Error al subir la imagen al storage');
-    throw new Error('Error al subir la imagen al storage', { cause: error });
+  } catch {
+    throw new Error('Error en el servicio r2 subiendo la imagen');
   }
 };
-
-// -----------------------------------------------------------------------------
-// --- ELIMINAR ARCHIVOS DEL SERVICIO DE STORAGE
-// -----------------------------------------------------------------------------
 
 export const deleteFromStorage = async (keys: string[]) => {
   try {
@@ -85,10 +83,7 @@ export const deleteFromStorage = async (keys: string[]) => {
       ) ?? [];
 
     return deletedMediaKeys;
-  } catch (error) {
-    console.error('Error en el servicio de storage eliminando los archivos');
-    throw new Error('Error en el servicio de storage eliminando los archivos', {
-      cause: error
-    });
+  } catch {
+    throw new Error('Error en el servicio r2 eliminando los archivos');
   }
 };

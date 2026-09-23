@@ -21,7 +21,7 @@ export const deleteOrphanMedia = async (
       ok: true,
       data: null
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error eliminando recursos huerfanos'

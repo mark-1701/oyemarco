@@ -30,7 +30,7 @@ export const savePost = async (
       ok: true,
       data: null
     };
-  } catch (error: any) {
+  } catch {
     return {
       ok: false,
       message: 'Error publicando el post'

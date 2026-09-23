@@ -18,7 +18,7 @@ export const getOrphanMedia = async (): Promise<ActionResult<string[]>> => {
       ok: true,
       data: keys
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error obtiendo la media huerfana'

@@ -18,7 +18,7 @@ export const updateMediaUrl = async (
       ok: true,
       data: updatedMedia
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error actualizando la url'

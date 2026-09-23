@@ -19,7 +19,7 @@ export const registerMedia = async (
       ok: true,
       data: media
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error registrando el recurso'

@@ -19,7 +19,7 @@ export const createPost = async (
       ok: true,
       data: post.id
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error creando el post'

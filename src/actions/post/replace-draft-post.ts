@@ -27,7 +27,7 @@ export const replaceDraftPost = async (
       ok: true,
       data: newPost.id
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error reemplazando el nuevo draft post'

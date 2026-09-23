@@ -16,7 +16,7 @@ export const getPostById = async (id: string): Promise<ActionResult<Post>> => {
       ok: true,
       data: post
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error consultando post'

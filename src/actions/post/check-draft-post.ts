@@ -17,10 +17,10 @@ export const checkDraftPost = async (): Promise<
       ok: true,
       data: post?.id ?? null
     };
-  } catch (error: any) {
+  } catch {
     return {
       ok: false,
-      message: 'xd'
+      message: 'Error cheackeando si hay algún post pendiente'
     };
   }
 };

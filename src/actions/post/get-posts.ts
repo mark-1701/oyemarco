@@ -23,7 +23,7 @@ export const getPosts = async (): Promise<ActionResult<Post[]>> => {
       ok: true,
       data: posts
     };
-  } catch (error) {
+  } catch {
     return {
       ok: false,
       message: 'Error consultado posts'

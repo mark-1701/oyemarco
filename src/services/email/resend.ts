@@ -17,15 +17,14 @@ export const sendContactEmail = async ({
     const { data, error } = await resend.emails.send({
       from: 'oyemarco <contacto@oyemarco.com>',
       to: ['mv.muralles@gmail.com'],
-      subject: 'Nuevo mensaje de contacto',
+      replyTo: email,
+      subject: `Nuevo mensaje de contacto - ${name}`,
       html: `
         <div>
-          <h3>Nuevo mensaje de formulario de contacto:</h3>
-          <ul>
-            <li><b>Nombre:</b> ${name}</li>
-            <li><b>Email:</b> ${email}</li>
-            <li><b>Mensaje:</b> ${message}</li>
-          </ul>
+          <h2>Nuevo mensaje de formulario de contacto:</h2>
+          <p><strong>Nombre:</strong><br>${name}</p> 
+          <p><strong>Email:</strong><br>${email}</p>
+          <p><strong>Mensaje:</strong><br>${message}</p>
         </div>
       `
     });

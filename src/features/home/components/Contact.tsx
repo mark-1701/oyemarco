@@ -47,10 +47,16 @@ export const Contact = () => {
             placeholder="nombre"
             className="rounded-xd h-9 bg-(--foreground) p-2 text-black
               placeholder:text-zinc-500"
-            {...register('name', { required: true })}
+            {...register('name', {
+              required: 'El nombre es obligatorio',
+              maxLength: {
+                value: 45,
+                message: 'El nombre no puedoe tener más de 45 carácteres'
+              }
+            })}
           />
           {errors.name && (
-            <SpanErrorMessage>El nombre es obligatorio</SpanErrorMessage>
+            <SpanErrorMessage>{errors.name.message}</SpanErrorMessage>
           )}
         </InputForm>
 
@@ -63,6 +69,10 @@ export const Contact = () => {
               placeholder:text-zinc-500"
             {...register('email', {
               required: 'El email es obligatorio',
+              maxLength: {
+                value: 200, 
+                message: 'El correo no puede tener más de 200 carácteres'
+              },
               pattern: {
                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                 message: 'Ingresa un email válido'

@@ -1,7 +1,5 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 type SendContactEmailInput = {
   name: string;
   email: string;
@@ -14,6 +12,8 @@ export const sendContactEmail = async ({
   message
 }: SendContactEmailInput) => {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const { data, error } = await resend.emails.send({
       from: 'oyemarco <contacto@oyemarco.com>',
       to: ['mv.muralles@gmail.com'],

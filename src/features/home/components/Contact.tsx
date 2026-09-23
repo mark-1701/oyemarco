@@ -58,7 +58,7 @@ export const Contact = () => {
           <input
             type="email"
             id="email"
-            placeholder="email"
+            placeholder="tu email"
             className="rounded-xd h-9 bg-(--foreground) p-2 text-black
               placeholder:text-zinc-500"
             {...register('email', {

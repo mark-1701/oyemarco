@@ -23,7 +23,8 @@ export const getPosts = async (): Promise<ActionResult<Post[]>> => {
       ok: true,
       data: posts
     };
-  } catch {
+  } catch (error) {
+    console.error('Error consultado posts:', error);
     return {
       ok: false,
       message: 'Error consultado posts'

@@ -1,0 +1,1 @@
+- eliminar también los medias (imágenes) de los posts eliminados mediante soft deletes

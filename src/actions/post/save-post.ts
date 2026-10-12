@@ -4,6 +4,7 @@ import { PostStatus } from '@/app/generated/prisma/enums';
 import prisma from '@/lib/prisma';
 import { ActionResult } from '@/types';
 import { mediaStatusOperations } from '../media/media-status-operations';
+import { revalidatePath } from 'next/cache';
 
 export const savePost = async (
   postId: string,
@@ -25,6 +26,9 @@ export const savePost = async (
       }),
       ...mediaStatusOperations(postId, mediakeys)
     ]);
+
+    revalidatePath(`/blog`);
+    revalidatePath(`/dashboard/posts`);
 
     return {
       ok: true,

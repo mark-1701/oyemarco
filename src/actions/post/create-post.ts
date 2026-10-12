@@ -2,6 +2,7 @@
 
 import prisma from '@/lib/prisma';
 import { ActionResult } from '@/types';
+import { revalidatePath } from 'next/cache';
 
 export const createPost = async (
   title: string,
@@ -14,6 +15,9 @@ export const createPost = async (
         title
       }
     });
+
+    revalidatePath(`/blog`);
+    revalidatePath(`/dashboard/posts`);
 
     return {
       ok: true,

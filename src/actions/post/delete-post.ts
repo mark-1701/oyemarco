@@ -2,6 +2,7 @@
 
 import prisma from '@/lib/prisma';
 import { ActionResult } from '@/types';
+import { revalidatePath } from 'next/cache';
 
 export const deletePost = async (id: string): Promise<ActionResult<null>> => {
   try {
@@ -11,6 +12,9 @@ export const deletePost = async (id: string): Promise<ActionResult<null>> => {
         deletedAt: new Date()
       }
     });
+
+    revalidatePath(`/blog`);
+    revalidatePath(`/dashboard/posts`);
 
     return {
       ok: true,

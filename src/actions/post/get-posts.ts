@@ -5,8 +5,6 @@ import prisma from '@/lib/prisma';
 import { ActionResult } from '@/types';
 
 export const getPosts = async (): Promise<ActionResult<Post[]>> => {
-  console.log('[getPosts] Ejecutando consulta en producción');
-
   try {
     const posts = await prisma.post.findMany({
       where: {
@@ -20,8 +18,6 @@ export const getPosts = async (): Promise<ActionResult<Post[]>> => {
         createdAt: 'desc'
       }
     });
-
-    console.log(posts);
 
     return {
       ok: true,

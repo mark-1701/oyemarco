@@ -1,6 +1,6 @@
 ## Guía de inicio (getting started)
 
-De momento esta en español en el futuro lo voy a traducir a inglés.
+De momento esta en español, en el futuro lo voy a traducir a inglés.
 
 ### Requisitos
 
@@ -22,6 +22,8 @@ npm install
 ```
 
 ### 3. Configurar las variables de entorno
+
+Crea el archivo .env a partir de la plantilla proporcionada:
 
 ```bash
 cp .env.example .env
@@ -53,7 +55,15 @@ Una vez iniciado el contenedor, configura `DATABASE_URL` para utilizar ese puert
 npx prisma migrate dev
 ```
 
-### 6. Iniciar el servidor de desarrollo
+### 6. Registrar la cuenta de usuario administrador
+
+Configura las variables de entorno `ADMIN_EMAIL` y `ADMIN_PASSWORD` en .env. Estas variables se utilizarán para crear la cuenta de administrador, necesaria para acceder al panel de administración.
+
+```bash
+npx prisma db seed
+```
+
+### 7. Iniciar el servidor de desarrollo
 
 ```bash
 npm run dev

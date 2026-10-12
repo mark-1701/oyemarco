@@ -19,6 +19,8 @@ export const getPosts = async (): Promise<ActionResult<Post[]>> => {
       }
     });
 
+    console.log(posts);
+
     return {
       ok: true,
       data: posts

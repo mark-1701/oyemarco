@@ -38,7 +38,6 @@ const AuthPage = () => {
 
     if (error) {
       toast.error('Ocurrió algún error iniciando sesión');
-      console.log(error);
     }
   };
 

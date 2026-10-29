@@ -17,9 +17,13 @@ export const BlogPostContent = ({ post }: BlogPostContentProps) => {
   return (
     <>
       <div>
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-6">
           {post.title && (
-            <h1 className="mb-1 font-serif text-xl font-bold">{post.title}</h1>
+            <h1
+              className="mb-1 font-serif text-xl font-bold text-(--foreground)"
+            >
+              {post.title}
+            </h1>
           )}
           <p className="text-(--foreground-400)">{`by marco | ${formatDateShort(post.createdAt)}`}</p>
         </div>

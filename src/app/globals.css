@@ -19,9 +19,10 @@
 
 .home {
   --background: hsl(200, 5%, 5%);
-
+  
   --foreground: #ffffffeb;
-  --foreground-secondary: rgba(255, 255, 255, 0.7);
+  /* --foreground-secondary: rgba(255, 255, 255, 0.7); */
+  --foreground-secondary: rgba(255, 255, 255, 0.6);
   --foreground-600: rgba(255, 255, 255, 0.6);
   --foreground-500: rgba(255, 255, 255, 0.5);
   --foreground-400: rgba(255, 255, 255, 0.4);

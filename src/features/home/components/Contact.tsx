@@ -32,8 +32,8 @@ export const Contact = () => {
   };
 
   return (
-    <Stack>
-      <Paragraph>
+    <Stack className='mb-12'>
+      <Paragraph className='mb-6 sm:mb-6'>
         Estoy abierto a nuevos proyectos y oportunidades. Si tienes una
         propuesta o quieres hablar sobre una idea, puedes escribirme a través de
         este formulario.

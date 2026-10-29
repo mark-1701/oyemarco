@@ -16,9 +16,8 @@ export default function HomeLayout({
       >
         <TopMenu />
         <div className="flex flex-1 flex-col">{children}</div>
+        <Footer />
       </div>
-      <Footer />
-      {/* </div> */}
     </div>
   );
 }

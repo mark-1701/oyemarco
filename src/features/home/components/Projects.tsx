@@ -5,7 +5,7 @@ import Image from 'next/image';
 export const Projects = () => {
   return (
     <Stack>
-      <div className="my-8 space-y-8 sm:space-y-12">
+      <div className="my-6 space-y-6">
         {projects.map(
           ({ imageURL, title, description, repository, preview }, index) => (
             <div
@@ -15,7 +15,7 @@ export const Projects = () => {
               <div>
                 <Heading
                   as="h6"
-                  className="text-sm font-normal text-(--foreground-600) italic
+                  className="text-sm font-normal text-(--foreground-500) italic
                     sm:text-sm sm:font-normal"
                 >
                   {title}
@@ -27,7 +27,7 @@ export const Projects = () => {
                   href={repository}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-(--foreground-600) underline"
+                  className="text-sm text-(--foreground-500) underline italic"
                 >
                   ver más...
                 </a>

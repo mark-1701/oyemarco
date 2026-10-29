@@ -37,14 +37,14 @@ export const SocialLinks = () => {
           >
             <Icon
               size={18}
-              className="text-(--foreground-600) hover:cursor-pointer"
+              className="text-(--foreground-500) hover:cursor-pointer"
             />
           </Link>
         ) : (
           <Icon
             key={title}
             size={18}
-            className="cursor-pointer text-(--foreground-600)"
+            className="cursor-pointer text-(--foreground-500)"
             aria-label={title}
           />
         )

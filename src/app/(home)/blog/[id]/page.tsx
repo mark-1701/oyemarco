@@ -30,7 +30,7 @@ const BlogPageId = async ({ params }: BlogIdPage) => {
         className="min-h-[calc(100dvh-5.5rem)] sm:min-h-[calc(100dvh-9.5rem)]"
       >
         <Link
-          className="mb-8 flex items-center gap-1 text-(--foreground-600)
+          className="mb-8 flex items-center gap-1 text-(--foreground-500)
             hover:cursor-pointer hover:underline"
           href="/blog"
         >
@@ -44,7 +44,7 @@ const BlogPageId = async ({ params }: BlogIdPage) => {
           border-(--border-strong)"
       >
         <Stack>
-          <p className="mb-6 text-(--foreground-600) italic">
+          <p className="mb-6 text-(--foreground-500) italic">
             Comparte este artículo en:
           </p>
           <SocialShareLinks />

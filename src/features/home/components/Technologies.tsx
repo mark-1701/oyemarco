@@ -20,7 +20,7 @@ const skills: { title: string; icon: string }[] = [
 export const Technologies = () => {
   return (
     <Stack>
-      <div className="my-12 grid grid-cols-5 gap-8 sm:grid-cols-6 sm:gap-12">
+      <div className="my-8 grid grid-cols-5 gap-8 sm:grid-cols-6 sm:gap-12">
         {skills.map(({ title, icon }) => (
           <Technology key={title} title={title} icon={icon} />
         ))}
@@ -34,7 +34,7 @@ const Technology = ({ title, icon }: { title: string; icon?: string }) => {
     <figure className="flex flex-col items-center gap-3">
       <i
         className={clsx(
-          'text-[24px] text-(--foreground-600) sm:text-[36px]',
+          'text-[24px] text-(--foreground-500) sm:text-[36px]',
           `devicon-${icon}-plain`
         )}
       ></i>

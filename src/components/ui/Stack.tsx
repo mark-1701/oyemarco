@@ -6,5 +6,5 @@ type StackProps = {
 };
 
 export const Stack = ({ className, children }: StackProps) => {
-  return <div className={cn('my-8', className)}>{children}</div>;
+  return <div className={cn('my-6', className)}>{children}</div>;
 };
